@@ -31,9 +31,9 @@ inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set completeopt=longest,menuone
 
-inoremap jk <Esc>`^
 inoremap kj <Esc>`^
-noremap lkj <Esc>`^:wq<CR>
-inoremap ;lkj <Esc>`^:wq<CR>
-noremap sdf <Esc>`^:q!<CR>
-inoremap asdf <Esc>`^:q!<CR>
+vnoremap kj <Esc>
+nnoremap lkj :wq<CR>
+inoremap lkj <Esc>`^:wq<CR>
+nnoremap sdf :q!<CR>
+inoremap sdf <Esc>`^:q!<CR>
