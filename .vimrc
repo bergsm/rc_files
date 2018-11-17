@@ -37,3 +37,5 @@ nnoremap lkj :wq<CR>
 inoremap lkj <Esc>`^:wq<CR>
 nnoremap sdf :q!<CR>
 inoremap sdf <Esc>`^:q!<CR>
+vnoremap < <gv
+vnoremap > >gv
