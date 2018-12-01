@@ -15,3 +15,6 @@ parse_git_branch() {
 }
 
 export PS1="\e[0:31m\u@\h:\e[m\e[0;32m\w\e[m\e[1;34m\$(parse_git_branch)\e[m \n\$"
+
+alias cp='cp -i'
+alias mv='mv -i'
