@@ -39,17 +39,15 @@ function! CleverTab()
 endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
-"TODO
 function FileHeading()
-    let s:line=line(".")
-    call setline(s:line,"//")
-    call append(s:line,"// %")
-    call append(s:line,"// Description - ")
-    call append(s:line+1,"// Author - Shawn Berg")
-    call append(s:line+2,"// Date - ".strftime("%b %d %Y"))
-    call setline(s:line+3,"//")
-    call setline(s:line+4,"")
-    unlet s:line
+    let s=line(".")
+    call setline(s,"/***********************************************")
+    call append(s,"* File name:")
+    call append(s+1,"* Description:")
+    call append(s+2,"* Author:")
+    call append(s+3,"* Date:")
+    call append(s+4,"************************************************/")
+    unlet s
     return "\<CR>"
 endfunction
 inoremap //// <C-R>=FileHeading()<CR>
