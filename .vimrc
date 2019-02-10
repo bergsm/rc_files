@@ -48,7 +48,7 @@ function FileHeading()
     call append(s+3,"* Date:")
     call append(s+4,"************************************************/")
     unlet s
-    return "\<CR>"
+    return ""
 endfunction
 inoremap //// <C-R>=FileHeading()<CR>
 
@@ -61,7 +61,7 @@ function! FunctionHeading()
     call append(s+3,"* Returns:")
     call append(s+4,"************************************************/")
     unlet s
-    return "\<CR>"
+    return ""
 endfunction
 inoremap /// <C-R>=FunctionHeading()<CR>
 
