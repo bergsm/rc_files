@@ -29,7 +29,7 @@ parse_git_branch() {
 }
 
 
-export PS1="\e[1:30m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+export PS1="\n\e[1:30m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
 #export PS1="\e[0:37\u@\h:\e[m\e[1;32m\w\e[m\e[1;30m\$(parse_git_branch)\e[m \n\$"
 
 alias cp='cp -i'
