@@ -13,6 +13,7 @@ set smartindent
 set autoindent
 
 
+"TODO add alternate colors for light background
 " change vim colors comment these out for default colors
 highlight comment  ctermfg=DarkGray
 highlight LineNr ctermfg=LightGray
