@@ -1,4 +1,5 @@
 syntax enable		" enable syntax processing
+":silent :!resize -s 0 100 > /dev/null
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -16,10 +17,13 @@ set autoindent
 highlight comment  ctermfg=DarkGray
 highlight LineNr ctermfg=LightGray
 highlight constant ctermfg=DarkYellow
+"highlight constant ctermfg=LightBlue
 highlight statement gui=bold ctermfg=DarkYellow
+"highlight statement gui=bold ctermfg=LightBlue
 highlight preproc ctermfg=DarkGray
 highlight Identifier ctermfg=DarkGray
 highlight type gui=bold ctermfg=DarkYellow
+"highlight type gui=bold ctermfg=LightBlue
 highlight Special term=bold ctermfg=DarkGray
 highlight Todo term=bold ctermfg=Black ctermbg=White
 highlight Visual term=bold ctermfg=NONE ctermbg=233
@@ -79,15 +83,15 @@ function! FunctionHeading()
 endfunction
 inoremap /// <C-R>=FunctionHeading()<CR>
 
-
+"use j and k to naviage autocomplete
 inoremap <expr> j pumvisible() ? "\<C-N>" : "j"
 inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set completeopt=longest,menuone
 
 inoremap kj <Esc>`^
-vnoremap kj <Esc>
-nnoremap ;lkj :wq<CR>
+vnoremap lkj <Esc>
+nnoremap lkj :wq<CR>
 inoremap ;lkj <Esc>`^:wq<CR>
 nnoremap sdf :q!<CR>
 inoremap sdf <Esc>`^:q!<CR>

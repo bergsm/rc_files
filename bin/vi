@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#source <(/usr/X11/bin/resize)
+
+#echo `eval $( resize )`
+
+#/usr/X11/bin/resize -s 100 103 > /dev/null
+#oldCols=$(osascript -e 'tell application "Terminal"' -e 'get size of front window' -e 'end tell' | cut -d ',' -f 1)
+#osascript -e 'tell application "Terminal"' -e 'get size of front window' -e 'end tell' | cut -d ',' -f 1
+#echo $oldCols
+#oldRows=$(osascript -e 'tell application "Terminal"' -e 'get size of front window' -e 'end tell' | cut -d ',' -f 2)
+#echo $oldRows
+osascript -e 'tell application "Terminal"' -e 'set size of front window to {836, 1050}' -e 'end tell'
+
+#/usr/bin/vim
+/usr/bin/vim "$@"
+#osascript -e 'tell application "Terminal"' -e "set size of front window to {\"$((oldCols))\", \"$((oldRows))\"}" -e 'end tell'
+osascript -e 'tell application "Terminal"' -e "set size of front window to {836, 523}" -e 'end tell'
+#/usr/X11/bin/resize -s $LINES $COLUMNS
+#/usr/X11/bin/resize -s 29 103 > /dev/null

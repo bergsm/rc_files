@@ -1,5 +1,8 @@
 PATH=$PATH:$HOME/bin
 
+PATH="~/bin:${PATH}"
+export PATH
+
 #calibre commands
 PATH="/Applications/calibre.app/Contents/console.app/Contents/MacOS:${PATH}"
 export PATH
@@ -17,13 +20,16 @@ export PATH
 export CLICOLOR=1
 export LSCOLORS=AxBxfxDxcxhxhxCxaCexex
 
+PATH="/usr/X11/bin:${PATH}"
+export PATH
+
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 
-export PS1="\e[0:90m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+export PS1="\e[1:30m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
 #export PS1="\e[0:37\u@\h:\e[m\e[1;32m\w\e[m\e[1;30m\$(parse_git_branch)\e[m \n\$"
 
 alias cp='cp -i'
