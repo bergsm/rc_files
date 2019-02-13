@@ -11,6 +11,20 @@ set background=dark
 set smartindent
 set autoindent
 
+
+" change vim colors comment these out for default colors
+highlight comment  ctermfg=DarkGray
+highlight LineNr ctermfg=LightGray
+highlight constant ctermfg=DarkYellow
+highlight statement gui=bold ctermfg=DarkYellow
+highlight preproc ctermfg=DarkGray
+highlight Identifier ctermfg=DarkGray
+highlight type gui=bold ctermfg=DarkYellow
+highlight Special term=bold ctermfg=DarkGray
+highlight Todo term=bold ctermfg=Black ctermbg=White
+highlight Visual term=bold ctermfg=NONE ctermbg=233
+
+
 " highlight whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
