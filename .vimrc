@@ -87,8 +87,8 @@ set completeopt=longest,menuone
 
 inoremap kj <Esc>`^
 vnoremap kj <Esc>
-nnoremap lkj :wq<CR>
-inoremap lkj <Esc>`^:wq<CR>
+nnoremap ;lkj :wq<CR>
+inoremap ;lkj <Esc>`^:wq<CR>
 nnoremap sdf :q!<CR>
 inoremap sdf <Esc>`^:q!<CR>
 vnoremap < <gv
