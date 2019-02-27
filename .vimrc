@@ -1,5 +1,13 @@
 syntax enable		" enable syntax processing
-":silent :!resize -s 0 100 > /dev/null
+
+" use tabs for makefiles
+if has ("autocmd")
+    filetype plugin indent on
+    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+endif
+
+set title
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -12,22 +20,23 @@ set background=dark
 set smartindent
 set autoindent
 
+"let color = "DarkYellow"
+let color = "DarkGreen"
 
-"TODO add alternate colors for light background
+"TODO add in a variation for light background
 " change vim colors comment these out for default colors
 highlight comment  ctermfg=DarkGray
+execute "highlight MatchParen  ctermfg=White ctermbg=".color
+execute "highlight underlined  ctermfg=".color
 highlight LineNr ctermfg=LightGray
-highlight constant ctermfg=DarkYellow
-"highlight constant ctermfg=LightBlue
-highlight statement gui=bold ctermfg=DarkYellow
-"highlight statement gui=bold ctermfg=LightBlue
+execute "highlight constant ctermfg=".color
+execute "highlight statement gui=bold ctermfg=".color
 highlight preproc ctermfg=DarkGray
 highlight Identifier ctermfg=DarkGray
-highlight type gui=bold ctermfg=DarkYellow
-"highlight type gui=bold ctermfg=LightBlue
+execute "highlight type gui=bold ctermfg=".color
 highlight Special term=bold ctermfg=DarkGray
-highlight Todo term=bold ctermfg=Black ctermbg=White
-highlight Visual term=bold ctermfg=NONE ctermbg=233
+execute "highlight Todo term=bold ctermfg=White ctermbg=".color
+highlight Visual term=bold ctermfg=NONE ctermbg=234
 
 
 " highlight whitespace

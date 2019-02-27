@@ -1,0 +1,11 @@
+[user]
+	name = Shawn Berg
+	email = bergshawnm@gmail.com
+[core]
+	autocrlf = input
+	editor = vim
+[color]
+    ui = true
+
+[alias]
+    s = status -sb
