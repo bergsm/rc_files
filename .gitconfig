@@ -6,7 +6,8 @@
 	editor = vim
 [color]
     ui = true
-[push]
-	default = simple
+
 [alias]
     s = status -sb
+[commit]
+	verbose = true
