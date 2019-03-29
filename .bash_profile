@@ -1,36 +1,73 @@
 PATH=$PATH:$HOME/bin
-
 PATH="~/bin:${PATH}"
 export PATH
 
 #calibre commands
-PATH="/Applications/calibre.app/Contents/console.app/Contents/MacOS:${PATH}"
+PATH="/Volumes/HDD/Apps/calibre.app/Contents/console.app/Contents/MacOS:${PATH}"
 export PATH
 
 # locate updatefd command
 PATH="/usr/libexec/:${PATH}"
 export PATH
 
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+# JUNIT framework
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/
+export JUNIT_HOME=/Library/JUNIT/junit4.10
+export CLASSPATH=$CLASSPATH:$JUNIT_HOME/junit-4.10.jar
 
-# change colors of bash prompt. Comment out to use default
-export CLICOLOR=1
-export LSCOLORS=AxBxfxDxcxhxhxCxaCexex
 
+# X11
 PATH="/usr/X11/bin:${PATH}"
 export PATH
 
+# TODO darken file dirs if possible
+# change colors of bash ls. Comment out to use default
+export CLICOLOR=1
+export LSCOLORS=AxBxfxDxcxhxhxCxaCexex
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+# Increase history size
+HISTSIZE=100000
+HISTFILESIZE=100000
+
+# show current time
+echo Current time: $(date)
+# show current date
+# requires weather python script from getWeather project
+#weather
+
+# use vim keybindings
+set -o vi
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-
-export PS1="\n\e[1:30m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
-#export PS1="\e[0:37\u@\h:\e[m\e[1;32m\w\e[m\e[1;30m\$(parse_git_branch)\e[m \n\$"
+#orange
+#export PS1="\n\e[1:30m\u@\h:\e[m\e[38;5;130m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+#green
+#export PS1="\n\e[1:30m\u@\h:\e[m\e[38;5;28m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+# blue
+#TODO colorize working directory from dark to light
+#TODO change color for which git branch (master vs feature)
+#TODO flash git branch if change?
+#TODO lighten path up a little
+export PS1="\n\e[38;5;111m\u\e[38;5;235m@\h:\e[m\e[38;5;111m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
 
 alias cp='cp -i'
 alias mv='mv -i'
+#alias rm='rm -i'
+#alias clion='open /Volumes/SSD/Applications/CLion.app'
+alias grep='grep --color=auto'
+#alias find='find ./ -name'
+#TODO find function
+#alias python='python3'
+
+# file path function
+fp () {
+    case "$1" in
+        /*) printf '%s\n' "$1";;
+    *) printf '%s\n' "$PWD/$1";;
+esac
+}

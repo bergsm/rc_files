@@ -32,7 +32,9 @@ set nosmartindent
 set autoindent
 
 "let color = "DarkYellow"
-let color = "LightBlue"
+"let color = "LightBlue"
+"let color = "LightBlue"
+let color = "67"
 
 "TODO add in a variation for light background
 " change vim colors comment these out for default colors
@@ -73,6 +75,7 @@ if has ("autocmd")
     au FileType * set fo-=c fo-=r fo-=o
 endif
 
+"Tab auto complete
 function! CleverTab()
     if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
         return "\<Tab>"
@@ -81,6 +84,18 @@ function! CleverTab()
     endif
 endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
+
+"Comment block remaps
+function CommentBlock()
+    let s=line(".")
+    call setline(s,"#################################################")
+    call append(s,"#")
+    call append(s+1,"#################################################")
+    unlet s
+    return ""
+endfunction
+inoremap ### <C-R>=FileHeading()<CR>
+
 
 function FileHeading()
     let s=line(".")
@@ -108,6 +123,7 @@ function! FunctionHeading()
 endfunction
 inoremap /// <C-R>=FunctionHeading()<CR>
 
+"use html syntax highlighting for handlebars files
 autocmd BufNewFile,BufRead *.handlebars set syntax=html
 
 
@@ -115,12 +131,13 @@ autocmd BufNewFile,BufRead *.handlebars set syntax=html
 "nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 "nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 
-"use j and k to naviage autocomplete
+"use j and k to navigate autocomplete
 inoremap <expr> j pumvisible() ? "\<C-N>" : "j"
 inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set completeopt=longest,menuone
 
+"remaps
 inoremap kj <Esc>`^
 vnoremap lkj <Esc>
 "nnoremap <nowait> lkj :wq<CR>
