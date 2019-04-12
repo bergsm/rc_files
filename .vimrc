@@ -35,23 +35,32 @@ set autoindent
 "let color = "LightBlue"
 "let color = "LightBlue"
 let color = "67"
+"let compColor =
+"let color = 166
 
 "TODO add in a variation for light background
 " change vim colors comment these out for default colors
-highlight comment  ctermfg=DarkGray
+highlight comment  ctermfg=238
 execute "highlight MatchParen  ctermfg=White ctermbg=".color
 execute "highlight underlined  ctermfg=".color
-highlight LineNr ctermfg=LightGray
+highlight LineNr ctermfg=247
 execute "highlight constant ctermfg=".color
-execute "highlight statement gui=bold ctermfg=".color
-highlight preproc ctermfg=DarkGray
-highlight Identifier ctermfg=DarkGray
+execute "highlight String term=bold ctermfg="245
+execute "highlight statement ctermfg=".color
+execute "highlight preproc ctermfg="240
+"highlight Identifier ctermfg=247
+execute "highlight Identifier ctermfg=".color
+execute "highlight Structure ctermfg=".color
 highlight Pmenu ctermbg=DarkGray guibg=DarkGray
 highlight PmenuSel ctermbg=Black guibg=Black
 execute "highlight type gui=bold ctermfg=".color
-highlight Special term=bold ctermfg=DarkGray
+highlight Special term=bold ctermfg=247
+"execute "highlight Special term=bold ctermfg=".color
 execute "highlight Todo term=bold ctermfg=White ctermbg=".color
 highlight Visual term=bold ctermfg=NONE ctermbg=235
+highlight diffAdded ctermfg=Green
+highlight diffRemoved ctermfg=Red
+syn match Todo contained "\<\(TODO\|FIXME\|BUG\)"
 
 
 " highlight whitespace

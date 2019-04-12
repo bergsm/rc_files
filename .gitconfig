@@ -1,13 +1,14 @@
 [user]
 	name = Shawn Berg
-	email = bergshawnm@gmail.com
+    email = bergshawnm@gmail.com
+    username = bergsm
 [core]
 	autocrlf = input
 	editor = vim
 [color]
     ui = true
 [push]
-	default = simple
+    default = simple
 [alias]
     s = status -sb
 [commit]

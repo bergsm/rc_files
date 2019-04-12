@@ -53,7 +53,7 @@ parse_git_branch() {
 #TODO change color for which git branch (master vs feature)
 #TODO flash git branch if change?
 #TODO lighten path up a little
-export PS1="\n\e[38;5;111m\u\e[38;5;235m@\h:\e[m\e[38;5;111m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+export PS1="\n\e[38;5;67m\u\e[38;5;255m@\e[38;5;238m\h:\e[m\e[38;5;67m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
 
 alias cp='cp -i'
 alias mv='mv -i'
