@@ -54,8 +54,8 @@ execute "highlight Structure ctermfg=".color
 highlight Pmenu ctermbg=DarkGray guibg=DarkGray
 highlight PmenuSel ctermbg=Black guibg=Black
 execute "highlight type gui=bold ctermfg=".color
-highlight Special term=bold ctermfg=247
-"execute "highlight Special term=bold ctermfg=".color
+"highlight Special term=bold ctermfg=247
+execute "highlight Special term=bold ctermfg=".color
 execute "highlight Todo term=bold ctermfg=White ctermbg=".color
 highlight Visual term=bold ctermfg=NONE ctermbg=235
 highlight diffAdded ctermfg=Green
@@ -157,6 +157,13 @@ inoremap sdf <Esc>`^:q!<CR>
 vnoremap < <gv
 vnoremap > >gv
 noremap WW :w<CR>
+""inoremap ( ()<left>
+""inoremap " ""<left>
+""inoremap ' ''<left>
+""inoremap [ []<left>
+""inoremap { {}<left>
+""inoremap {<CR> {<CR>}<ESC>0
+""inoremap {;<CR> {<CR>};<ESC>0
 "search and replace current word from here til end of file
 nnoremap sr :.,$s/<c-r>=expand("<cword>")<cr>/replace/gc
 "global search and replace
