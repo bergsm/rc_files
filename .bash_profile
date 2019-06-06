@@ -64,6 +64,14 @@ alias grep='grep --color=auto'
 #TODO find function
 #alias python='python3'
 
+# rename function
+rename() {
+    for i in $1*
+    do
+        mv "$i" "${i/$1/$2}"
+    done
+}
+
 # file path function
 fp () {
     case "$1" in

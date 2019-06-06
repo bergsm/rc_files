@@ -54,14 +54,17 @@ execute "highlight Structure ctermfg=".color
 highlight Pmenu ctermbg=DarkGray guibg=DarkGray
 highlight PmenuSel ctermbg=Black guibg=Black
 execute "highlight type gui=bold ctermfg=".color
+"execute "highlight Todo term=bold ctermfg=White ctermbg=".color
 "highlight Special term=bold ctermfg=247
 execute "highlight Special term=bold ctermfg=".color
-execute "highlight Todo term=bold ctermfg=White ctermbg=".color
 highlight Visual term=bold ctermfg=NONE ctermbg=235
-highlight diffAdded ctermfg=Green
-highlight diffRemoved ctermfg=Red
 syn match Todo contained "\<\(TODO\|FIXME\|BUG\)"
 
+colorscheme jellybeans
+
+execute "highlight Todo term=bold ctermfg=Black ctermbg=Yellow"
+highlight diffAdded ctermfg=Green
+highlight diffRemoved ctermfg=Red
 
 " highlight whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -146,10 +149,14 @@ inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set completeopt=longest,menuone
 
+autocmd InsertEnter * set timeoutlen=90
+autocmd InsertLeave * set timeoutlen=1000
+
 "remaps
 inoremap kj <Esc>`^
-vnoremap lkj <Esc>
+"inoremap <expr> kj pumvisible() ? "" : "<Esc>`^"
 "nnoremap <nowait> lkj :wq<CR>
+vnoremap f <Esc>`^
 nnoremap ;lk :wq<CR>
 inoremap ;lk <Esc>`^:wq<CR>
 nnoremap sdf :q!<CR>
