@@ -11,6 +11,8 @@ syntax enable		" enable syntax processing
 set viminfo='20,<1000,s1000
 
 
+set backspace=indent,eol,start
+
 " use tabs for makefiles
 if has ("autocmd")
     filetype plugin indent on
@@ -158,7 +160,9 @@ inoremap kj <Esc>`^
 "nnoremap <nowait> lkj :wq<CR>
 vnoremap f <Esc>`^
 nnoremap ;lk :wq<CR>
+nnoremap ;l :w<CR>
 inoremap ;lk <Esc>`^:wq<CR>
+inoremap ;l <Esc>`^:w<CR>
 nnoremap sdf :q!<CR>
 inoremap sdf <Esc>`^:q!<CR>
 vnoremap < <gv

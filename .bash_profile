@@ -57,6 +57,7 @@ export PS1="\n\e[38;5;67m\u\e[38;5;255m@\e[38;5;238m\h:\e[m\e[38;5;67m\w\e[m\e[0
 
 alias cp='cp -i'
 alias mv='mv -i'
+alias vi='vim'
 #alias rm='rm -i'
 #alias clion='open /Volumes/SSD/Applications/CLion.app'
 alias grep='grep --color=auto'
