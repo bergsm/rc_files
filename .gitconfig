@@ -11,5 +11,13 @@
     default = simple
 [alias]
     s = status -sb
+    b = branch -a
+    ac = !git add -A && git commit
+    acp = !git add -A && git commit && git push
+
 [commit]
 	verbose = true
+[github]
+	user = bergsm
+[ghi]
+	token = !security find-internet-password -a bergsm -s github.com -l 'ghi token' -w
