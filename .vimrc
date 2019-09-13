@@ -29,14 +29,14 @@ set number
 set showcmd
 "set cursorline
 set showmatch
-set background=dark
+set background=light
 set nosmartindent
 set autoindent
 
 "let color = "DarkYellow"
 "let color = "LightBlue"
 "let color = "LightBlue"
-let color = "67"
+let color = "39"
 "let compColor =
 "let color = 166
 
@@ -62,7 +62,8 @@ execute "highlight Special term=bold ctermfg=".color
 highlight Visual term=bold ctermfg=NONE ctermbg=235
 syn match Todo contained "\<\(TODO\|FIXME\|BUG\)"
 
-colorscheme jellybeans
+"colorscheme jellybeans
+"colorscheme solarized
 
 execute "highlight Todo term=bold ctermfg=Black ctermbg=Yellow"
 highlight diffAdded ctermfg=Green
@@ -168,6 +169,12 @@ inoremap sdf <Esc>`^:q!<CR>
 vnoremap < <gv
 vnoremap > >gv
 noremap WW :w<CR>
+nnoremap ; :
+vnoremap ; :
+
+noremap HEX :%!xxd<CR>
+noremap BIN :%!xxd -r<CR>
+
 ""inoremap ( ()<left>
 ""inoremap " ""<left>
 ""inoremap ' ''<left>
