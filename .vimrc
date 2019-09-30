@@ -8,6 +8,8 @@ syntax enable		" enable syntax processing
 
 "TODO set font
 
+set clipboard=unnamed
+
 set viminfo='20,<1000,s1000
 
 
@@ -171,6 +173,8 @@ vnoremap > >gv
 noremap WW :w<CR>
 nnoremap ; :
 vnoremap ; :
+nnoremap yA ggyG``
+vnoremap yA ggyG``
 
 noremap HEX :%!xxd<CR>
 noremap BIN :%!xxd -r<CR>
