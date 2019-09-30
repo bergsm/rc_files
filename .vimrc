@@ -174,7 +174,8 @@ noremap WW :w<CR>
 nnoremap ; :
 vnoremap ; :
 nnoremap yA ggyG``
-vnoremap yA ggyG``
+vnoremap yA vggvGy``
+nnoremap vA ggvG
 
 noremap HEX :%!xxd<CR>
 noremap BIN :%!xxd -r<CR>
