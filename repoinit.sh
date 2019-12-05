@@ -12,7 +12,7 @@ cd $1
 
 git init
 
-echo "README for $1" >> README
+echo "README for $1" >> README.md
 
 git add -A
 git commit -m "Initial commit"
