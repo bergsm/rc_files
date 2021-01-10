@@ -1,3 +1,4 @@
+#!/bin/bash
 
 token=806154e183fa1a25bf09a656888ce1d99fe2d848
 
@@ -17,4 +18,4 @@ echo "README for $1" >> README.md
 git add -A
 git commit -m "Initial commit"
 git remote add origin git@github.com:bergsm/$1
-git push -u origin master
+git push -u origin main
