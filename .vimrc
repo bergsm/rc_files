@@ -1,17 +1,10 @@
 "TODO add persistent undo
 
-"TODO implement
-"osascript -e 'tell application "Terminal"' -e 'set size of front window to {836, 1050}' -e 'end tell' 2>/dev/null
-
 syntax enable		" enable syntax processing
-
-
-"TODO set font
-
-set clipboard=unnamed
 
 set viminfo='20,<1000,s1000
 
+set clipboard=unnamedplus
 
 set backspace=indent,eol,start
 
@@ -19,9 +12,11 @@ set backspace=indent,eol,start
 if has ("autocmd")
     filetype plugin indent on
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType mail set spell
+    autocmd FileType markdown set spell
 endif
 
-set title
+"set title
 
 set tabstop=4
 set softtabstop=4
@@ -31,14 +26,18 @@ set number
 set showcmd
 "set cursorline
 set showmatch
-set background=light
+set background=dark
 set nosmartindent
 set autoindent
+set statusline+=%F
+set statusline+=%10((%l,%c)%)
+set statusline+=%P
+set laststatus=2
 
 "let color = "DarkYellow"
 "let color = "LightBlue"
 "let color = "LightBlue"
-let color = "39"
+let color = "67"
 "let compColor =
 "let color = 166
 
@@ -65,14 +64,15 @@ highlight Visual term=bold ctermfg=NONE ctermbg=235
 syn match Todo contained "\<\(TODO\|FIXME\|BUG\)"
 
 "colorscheme jellybeans
-"colorscheme solarized
+colorscheme wal
 
 execute "highlight Todo term=bold ctermfg=Black ctermbg=Yellow"
-highlight diffAdded ctermfg=Green
-highlight diffRemoved ctermfg=Red
+highlight diffAdded ctermfg=28
+highlight diffRemoved ctermfg=196
+highlight Todo ctermbg=187
 
 " highlight whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=196 guibg=red
 match ExtraWhitespace /\s\+$/
 
 
@@ -94,7 +94,8 @@ endif
 
 "Tab auto complete
 function! CleverTab()
-    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    if strpart( getline('.'), 0, col('.')-1) =~ '^\s*$'
+    "if strpart( getline('.'), col('.')-2, 3) =~ '^\s*$'
         return "\<Tab>"
     else
         return "\<C-P>"
@@ -112,6 +113,7 @@ function CommentBlock()
     return ""
 endfunction
 inoremap ### <C-R>=FileHeading()<CR>
+
 
 
 function FileHeading()
@@ -139,6 +141,19 @@ function! FunctionHeading()
     return ""
 endfunction
 inoremap /// <C-R>=FunctionHeading()<CR>
+
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 "use html syntax highlighting for handlebars files
 autocmd BufNewFile,BufRead *.handlebars set syntax=html
@@ -171,7 +186,7 @@ inoremap sdf <Esc>`^:q!<CR>
 vnoremap < <gv
 vnoremap > >gv
 noremap WW :w<CR>
-nnoremap ; :
+noremap ; :
 vnoremap ; :
 nnoremap yA ggyG``
 vnoremap yA vggvGy``
@@ -179,6 +194,8 @@ nnoremap vA ggvG
 
 noremap HEX :%!xxd<CR>
 noremap BIN :%!xxd -r<CR>
+
+command RUN !%:p
 
 ""inoremap ( ()<left>
 ""inoremap " ""<left>
