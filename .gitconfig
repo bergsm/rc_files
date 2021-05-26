@@ -21,3 +21,7 @@
 	user = bergsm
 [ghi]
 	token = !security find-internet-password -a bergsm -s github.com -l 'ghi token' -w
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

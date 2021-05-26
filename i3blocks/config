@@ -1,0 +1,91 @@
+[volume]
+#label=  
+interval=3
+separator=true
+#command=amixer get IEC958 | egrep -o "[0-9]+%" | sed -n '2 p'
+#command=mpstat | sed -n 4p | cut -d " " -f 16
+#command=/home/bergsm/prog/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio
+command=$HOME/prog/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio
+
+[bluetooth]
+label=  
+interval=6
+separator=true
+command=$HOME/prog/i3blocks-bluetooth/bluetooth
+
+
+[openvpn]
+#TODO
+#label= vpn:
+label=  
+#command=sudo /home/bergsm/prog/i3blocks-contrib/openvpn/openvpn -p '/run/openvpn-client/*.pid | sed -n 2p
+command=if [[ $(ps -A | grep openvpn) ]]; then echo up; else echo down;fi
+interval=10
+#PID_FILE_FORMAT='/run/openvpn-client/*.pid'
+
+#[vpn]
+#label=  
+#interval=5
+#command=$(sudo ls /run/openvpn-client/)
+#command=echo Test
+
+[wifi]
+label=  
+#label=  
+command=iwgetid -r
+separator=true
+interval=6
+
+[cpu]
+#TODO set urgent flags
+#command=awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1) "%"; }' <(grep 'cpu ' /proc/stat) <(sleep 1;grep 'cpu ' /proc/stat)
+#command=echo hello
+#command=/home/bergsm/prog/i3blocks-contrib/cpu_usage/cpu_usage
+command=$HOME/prog/i3blocks-contrib/cpu_usage/cpu_usage
+label=  
+#label=c
+interval=6
+separator=true
+
+[temperature]
+#TODO set urgent flags
+command=T=$(cat /sys/class/thermal/thermal_zone0/temp); echo $(( $T / 1000 ))°C
+label=  
+interval=10
+separator=true
+
+[memory]
+#TODO set urgent flags and percentage
+#command=free -mh | sed -n 2p | cut -d " " -f 46
+#command=free -mh | sed -n 2p | cut -d "i" -f 6 | cut -d " " -f 8
+command=$HOME/prog/i3blocks-contrib/memory/memory
+#command=$HOME/prog/i3blocks/blocks/memory
+#label=  
+label=  
+interval=6
+separator=true
+
+[battery]
+#TODO set urgent flags and change battery sprite lightning bolt for charging
+#command=acpi | cut -d "," -f 2 | cut -b 2-4
+command=$HOME/prog/i3blocks-battery/battery
+interval=60
+label=  
+separator=true
+
+#[time]
+#command= date '+%H:%M'
+#interval=15
+#label=
+#separator=true
+
+[day]
+command= date '+%H:%M %a %b %e, %Y'
+interval=30
+label=  
+separator=true
+
+[weather]
+command=$HOME/prog/i3blocks-contrib/weather
+interval=600
+separator=true
