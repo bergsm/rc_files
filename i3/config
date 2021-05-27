@@ -293,8 +293,8 @@ bar {
     #font Iosveka-13 40px
     colors {
         #background $bg-color
-        #background #000000BB
-        background #000000BB
+        #background #0000007B
+        background #0000007B
         #background #00000000
         #separator #757575
         separator $bg-color

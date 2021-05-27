@@ -69,7 +69,7 @@ separator=true
 #TODO set urgent flags and change battery sprite lightning bolt for charging
 #command=acpi | cut -d "," -f 2 | cut -b 2-4
 command=$HOME/prog/i3blocks-battery/battery
-interval=60
+interval=1
 label=  
 separator=true
 
@@ -87,5 +87,5 @@ separator=true
 
 [weather]
 command=$HOME/prog/i3blocks-contrib/weather
-interval=600
+interval=300
 separator=true
