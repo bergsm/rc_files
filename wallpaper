@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Active wallpaper lives at $HOME/pics/wallpapers/wallpaper
+
+
+#check for arg to image
+if [[ $# -lt 1  ||  $(file $1 | grep -c "image data") -lt 1 ]]; then
+    echo "Wallpaper requries image file as argument"
+    exit 1
+fi
+
+
+filename="wallpaper"
+todArg=$(echo $2 | tr '[:upper:]' '[:lower:]')
+todStatus=$(cat $HOME/.config/redshift/status)
+
+#TODO args for sunrise / sunset
+#args for day and night wallpapers
+if [[ $todArg == "night" ]]; then
+    filename=wallpaper_night
+elif [[ $todArg == "day" ]]; then
+    filename=wallpaper_day
+elif [[ $todArg == "sunset" ]]; then
+    filename=wallpaper_sunset
+elif [[ $todArg == "sunrise" ]]; then
+    filename=wallpaper_sunrise
+else
+    filename=wallpaper_$todStatus
+    todArg=$todStatus
+fi
+
+
+#TODO make multilockscreen fast via caching (previous 5 or so ) and single wallpaper generation (blur DONE)
+if [[ $todArg == $todStatus ]]; then
+    multilockscreen --fx blur -u $1 >> /dev/null 2>&1 &
+    pid=$!
+fi
+
+# wait for lock screen wallpaper to generate
+wait $pid
+#TODO store pgrep into variable
+if pgrep -x "i3lock" > /dev/null; then
+
+    cp $1 $HOME/pics/wallpapers/$filename
+    #kill lock screen to make changes (won't work properly when locked)
+
+    if [[ $todArg == $todStatus ]]; then
+        cp $HOME/pics/wallpapers/$filename $HOME/pics/wallpapers/wallpaper
+        cp $HOME/pics/wallpapers/$filename $HOME/.mozilla/firefox/gxmftrrv.default-release/chrome/wallpaper
+        rm -rf $HOME/.cache/wal/*
+        wal -i $HOME/pics/wallpapers/wallpaper -b "#000000" -a 50 >> /dev/null 2>&1
+
+        . "$HOME/.cache/wal/colors.sh"
+
+        #Change i3bar colors in .Xresources
+        sed -i "/wal.color0/c\wal.color0: $color0" $HOME/.Xresources
+        sed -i "0,/wal.color1/{s/^wal.color1.*/wal.color1: $color1/}" $HOME/.Xresources
+        sed -i "/wal.color2/c\wal.color2: $color2" $HOME/.Xresources
+        sed -i "/wal.color3/c\wal.color3: $color3" $HOME/.Xresources
+        sed -i "/wal.color4/c\wal.color4: $color4" $HOME/.Xresources
+        sed -i "/wal.color5/c\wal.color5: $color5" $HOME/.Xresources
+        sed -i "/wal.color6/c\wal.color6: $color6" $HOME/.Xresources
+        sed -i "/wal.color7/c\wal.color7: $color7" $HOME/.Xresources
+        sed -i "/wal.color8/c\wal.color8: $color8" $HOME/.Xresources
+        sed -i "/wal.color9/c\wal.color9: $color9" $HOME/.Xresources
+        sed -i "/wal.color10/c\wal.color10: $color10" $HOME/.Xresources
+        sed -i "/wal.color11/c\wal.color11: $color11" $HOME/.Xresources
+        sed -i "/wal.color12/c\wal.color12: $color12" $HOME/.Xresources
+        sed -i "/wal.color13/c\wal.color13: $color13" $HOME/.Xresources
+        sed -i "/wal.color14/c\wal.color14: $color14" $HOME/.Xresources
+        sed -i "/wal.color15/c\wal.color15: $color15" $HOME/.Xresources
+
+        xrdb $HOME/.Xresources
+        # see if user has returned during script
+        #idle=$(xprintidle)
+        killall i3lock
+        xdotool key Super+Shift+r
+        #sleep 1
+        multilockscreen -l > /dev/null 2>&1
+
+        # if user is back don't lock them back out
+        #if [[ $idle -gt 60000 ]]; then
+        #fi
+    fi
+
+else
+    cp $1 $HOME/pics/wallpapers/$filename
+
+    if [[ $todArg == $todStatus ]]; then
+        cp $HOME/pics/wallpapers/$filename $HOME/pics/wallpapers/wallpaper
+        cp $HOME/pics/wallpapers/$filename $HOME/.mozilla/firefox/gxmftrrv.default-release/chrome/wallpaper
+        rm -rf $HOME/.cache/wal/*
+        wal -i $HOME/pics/wallpapers/wallpaper -b "#000000" -a 50 >> /dev/null 2>&1
+
+        . "$HOME/.cache/wal/colors.sh"
+
+        #Change i3bar colors in .Xresources
+        sed -i "/wal.color0/c\wal.color0: $color0" $HOME/.Xresources
+        sed -i "0,/wal.color1/{s/^wal.color1.*/wal.color1: $color1/}" $HOME/.Xresources
+        sed -i "/wal.color2/c\wal.color2: $color2" $HOME/.Xresources
+        sed -i "/wal.color3/c\wal.color3: $color3" $HOME/.Xresources
+        sed -i "/wal.color4/c\wal.color4: $color4" $HOME/.Xresources
+        sed -i "/wal.color5/c\wal.color5: $color5" $HOME/.Xresources
+        sed -i "/wal.color6/c\wal.color6: $color6" $HOME/.Xresources
+        sed -i "/wal.color7/c\wal.color7: $color7" $HOME/.Xresources
+        sed -i "/wal.color8/c\wal.color8: $color8" $HOME/.Xresources
+        sed -i "/wal.color9/c\wal.color9: $color9" $HOME/.Xresources
+        sed -i "/wal.color10/c\wal.color10: $color10" $HOME/.Xresources
+        sed -i "/wal.color11/c\wal.color11: $color11" $HOME/.Xresources
+        sed -i "/wal.color12/c\wal.color12: $color12" $HOME/.Xresources
+        sed -i "/wal.color13/c\wal.color13: $color13" $HOME/.Xresources
+        sed -i "/wal.color14/c\wal.color14: $color14" $HOME/.Xresources
+        sed -i "/wal.color15/c\wal.color15: $color15" $HOME/.Xresources
+
+        xrdb $HOME/.Xresources
+
+        xdotool key Super+Shift+r
+    fi
+fi
+
