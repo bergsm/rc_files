@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+warninglvl=10
+#critlvl=5
+
+battery=$(acpi | cut -d "," -f 2 | cut --complement -c 1 | rev | cut --complement -c 1 | rev)
+#battery=7
+charge=$(acpi | cut -d " " -f 3 | rev | cut --complement -c 1 | rev)
+# if battery goes below warning level and not charging
+if [[ $battery -le $warninglvl && "$charge" == "Discharging" ]];
+then
+    notify-send -u critical Low "Battery! $battery%"
+fi
+
+if [[ "$charge" == "Charging" ]];
+then
+    echo "$battery% "
+else
+    echo "$battery%"
+fi
+
