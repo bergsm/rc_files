@@ -1,0 +1,29 @@
+#!/bin/python
+
+import subprocess
+
+powerStr = subprocess.check_output(['bluetoothctl', 'show']).decode()
+power = powerStr[powerStr.find('Powered:')+9:powerStr.find('Powered:')+12]
+
+if ('no' in power):
+    power = 'off'
+else:
+    power = 'on'
+
+devices = subprocess.check_output(['bluetoothctl', 'devices']).decode().split('\n')
+
+connDevices = []
+
+for device in devices[:-1]:
+    MAC = device.split(' ')[1]
+    info = subprocess.check_output(['bluetoothctl', 'info', MAC]).decode()
+    connected = info[info.find('Connected:')+11:info.find('Connected:')+14]
+    if (connected == 'yes'):
+        line = info.split('\n')[1]
+        name = line.split(' ')[1]
+        connDevices.append(name)
+
+if ( power == 'on' and connDevices):
+    print(power, "[", ', '.join(connDevices), "]")
+else:
+    print(power)
