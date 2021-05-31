@@ -1,5 +1,5 @@
 xrandr --output HDMI-A-0 --auto --pos 0x0 --output eDP --primary --auto --pos 576x2160 --scale 1.4x1.4
-#xrandr --output HDMI-A-0 --scale 0.9999x0.9999
+#xrandr --output HDMI-A-0 --mode 2650x1440 --pos 0x0 --output eDP --primary --auto --pos 576x2160 --scale 1.8x1.8
 
 
 xmodmap ~/.Xmodmap
