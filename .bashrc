@@ -15,7 +15,8 @@ export HISTCONTROL=ignoreboth:erasedups
 alias ls='ls --color=auto'
 alias perm="stat -c '%A %a %h %U %G %s %y %n' *| sed 's/\.[[:digit:]]\+[ ]\+-[[:digit:]]\+/ /'"
 alias sudo='sudo -E'
-alias grep='grep --color=auto'
+#alias grep='grep --color=auto'
+alias grep='rg'
 alias vi='vim'
 alias svi='sudo -E vim'
 alias sudo='sudo -E'
@@ -23,7 +24,8 @@ alias pacman='sudo pacman'
 alias makepkg='makepkg -si'
 alias dnsrecon='/home/bergsm/prog/dnsrecon/dnsrecon.py'
 alias batt='acpi'
-alias find='sudo find'
+#alias find='sudo find'
+alias find='fd'
 alias updatedb='sudo updatedb'
 alias calc='bc -l'
 alias weather='curl -Ss https://wttr.in?0'
@@ -43,7 +45,8 @@ alias mousex='bluetoothctl disconnect ED:F3:84:65:9B:EC'
 alias testwifi='ping 8.8.8.8'
 alias open='xdg-open'
 alias openvpn='sudo openvpn'
-alias vpnhome='sudo openvpn $HOME/vpn/home.conf'
+#alias vpnhome='sudo openvpn $HOME/vpn/home.conf'
+alias vpnhome='sudo openvpn $HOME/vpn/motile.conf'
 alias killvpn='sudo killall openvpn'
 alias bton='bluetoothctl power on'
 alias btoff='bluetoothctl power off'
@@ -53,7 +56,8 @@ alias audio='pavucontrol'
 alias moni-xbox='sudo ddcutil setvcp 60 0x12'
 #alias moni-ext='sudo ddcutil setvcp 60 0x11'
 alias moni-redhat='sudo ddcutil setvcp 60 0x11'
-alias moni-mac='sudo ddcutil setvcp 60 0x0f'
+alias moni_bright='sudo ddcutil setvcp 10 80'
+alias moni_dim='sudo ddcutil setvcp 10 0'
 alias gdb='gdb --args'
 
 
@@ -91,6 +95,10 @@ stopx() {
     sudo chvt 1
 }
 
+spool_print() {
+    lp -o media=A8 $1
+}
+
 #alias lock='(bash /home/bergsm/pics/shutdown2/shutdown.sh lock & > /dev/null 2>&1)'
 alias lock='multilockscreen -l blur > /dev/null 2>&1'
 
@@ -111,3 +119,20 @@ WWW_HOME=https://www.google.com; export WWW_HOME
 # pywal
 #setsid wal -i ~/pics/startup/hacker-87.png
 (cat ~/.cache/wal/sequences &)
+. "$HOME/.cargo/env"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/bergsm/prog/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/bergsm/prog/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

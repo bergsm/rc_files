@@ -1,6 +1,7 @@
 !Xcursor.size: 6
-Xft.dpi: 144
-!Xft.dpi: 96
+!Xft.dpi: 144
+Xft.dpi: 110
+!Xft.dpi: 80
 
 ! URxvt
 
@@ -55,21 +56,21 @@ URxvt.boldFont: xft:Iosevka-13:style=Extrabold
 
 ! Wal Colors
 wal.color0: #000000
-wal.color1: #262D5A
-wal.color2: #3C435A
-wal.color3: #4B4B53
-wal.color4: #5C5F6C
-wal.color5: #9F5F41
-wal.color6: #636A93
-wal.color7: #9ba0c9
-wal.color8: #6c708c
-wal.color9: #262D5A
-wal.color10: #3C435A
-wal.color11: #4B4B53
-wal.color12: #5C5F6C
-wal.color13: #9F5F41
-wal.color14: #636A93
-wal.color15: #9ba0c9
+wal.color1: #2329A0
+wal.color2: #355CBF
+wal.color3: #6570AE
+wal.color4: #7885AF
+wal.color5: #6895D3
+wal.color6: #9394B3
+wal.color7: #c6d0e0
+wal.color8: #8a919c
+wal.color9: #2329A0
+wal.color10: #355CBF
+wal.color11: #6570AE
+wal.color12: #7885AF
+wal.color13: #6895D3
+wal.color14: #9394B3
+wal.color15: #c6d0e0
 
 ! black
 URxvt.color0  : #2E3436
