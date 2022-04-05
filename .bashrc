@@ -9,12 +9,11 @@
 
 export HISTSIZE=10000
 export EDITOR=vim
-export OPENCV_LOG_LEVEL=ERROR
-OPENCV_LOG_LEVEL=ERROR
+#export OPENCV_LOG_LEVEL=ERROR
+#OPENCV_LOG_LEVEL=ERROR
 export HISTCONTROL=ignoreboth:erasedups
 alias ls='ls --color=auto'
 alias perm="stat -c '%A %a %h %U %G %s %y %n' *| sed 's/\.[[:digit:]]\+[ ]\+-[[:digit:]]\+/ /'"
-alias sudo='sudo -E'
 #alias grep='grep --color=auto'
 alias grep='rg'
 alias vi='vim'
@@ -22,7 +21,6 @@ alias svi='sudo -E vim'
 alias sudo='sudo -E'
 alias pacman='sudo pacman'
 alias makepkg='makepkg -si'
-alias dnsrecon='/home/bergsm/prog/dnsrecon/dnsrecon.py'
 alias batt='acpi'
 #alias find='sudo find'
 alias find='fd'
@@ -123,16 +121,16 @@ WWW_HOME=https://www.google.com; export WWW_HOME
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/bergsm/prog/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/bergsm/prog/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/home/bergsm/prog/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/bergsm/prog/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
 
