@@ -1,0 +1,26 @@
+#!/bin/bash
+
+dur=120
+target=80
+curr=$(light -G)
+curr=${curr%.*}
+extCurr=$(sudo ddcutil getvcp 10 | cut -b 68-69)
+echo "curr = "$curr
+echo "target ="$target
+echo "dur ="$dur
+
+inc=$(( $dur / ($curr - $target) ))
+inc=$(($inc>1 ? inc : 1))
+
+echo "inc = "$inc
+
+while [[ $curr -lt $target ]]
+do
+    echo "curr = "$curr
+    light -A 1
+    sudo ddcutil setvcp 10 $(( $extCurr + 1 )) &
+    sleep $inc
+    curr=$(light -G)
+    curr=${curr%.*}
+    extCurr=$(sudo ddcutil getvcp 10 | cut -b 68-69)
+done
