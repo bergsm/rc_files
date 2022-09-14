@@ -8,6 +8,9 @@ xkb_symbols "basic" {
     modifier_map Control { <LALT> };
     modifier_map Control { <RALT> };
 
+    key <ESC> { [ Caps_Lock ] };
+    replace key <CAPS> { [ Escape ] };
+
     key <TLDE>	{[   grave,	 asciitilde	]};
     key <AE01>	{[	 1,	 exclam		]};
     key <AE02>	{[	 2,	 at		]};
