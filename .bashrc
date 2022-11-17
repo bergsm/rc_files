@@ -9,13 +9,15 @@
 
 export HISTSIZE=10000
 export EDITOR=vim
+export BROWSER=firefox
 #export OPENCV_LOG_LEVEL=ERROR
 #OPENCV_LOG_LEVEL=ERROR
 export HISTCONTROL=ignoreboth:erasedups
+#export HISTCONTROL=ignoreboth
 alias ls='ls --color=auto'
 alias perm="stat -c '%A %a %h %U %G %s %y %n' *| sed 's/\.[[:digit:]]\+[ ]\+-[[:digit:]]\+/ /'"
-#alias grep='grep --color=auto'
-alias grep='rg'
+alias grep='grep --color=auto'
+#alias grep='rg'
 alias vi='vim'
 alias svi='sudo -E vim'
 alias sudo='sudo -E'
@@ -34,12 +36,6 @@ alias pachist='cat /var/log/pacman.log | grep installed'
 alias screenshot='maim -s ~/pics/screenshots/$(date '+%b%d%Y_%H%M').png'
 alias screenshotcopy='maim -s | xclip -selection clipboard -t image/png'
 alias sscp='maim -s | xclip -selection clipboard -t image/png'
-alias btbuds='bluetoothctl connect 70:26:05:CB:89:54'
-alias btbudsx='bluetoothctl disconnect 70:26:05:CB:89:54'
-alias arctis='bluetoothctl connect 28:9A:4B:21:87:7E'
-alias arctisx='bluetoothctl disconnect 28:9A:4B:21:87:7E'
-alias mouse='bluetoothctl connect ED:F3:84:65:9B:EC'
-alias mousex='bluetoothctl disconnect ED:F3:84:65:9B:EC'
 alias testwifi='ping 8.8.8.8'
 alias open='xdg-open'
 alias openvpn='sudo openvpn'
@@ -53,10 +49,20 @@ alias flameshot='flameshot gui'
 alias audio='pavucontrol'
 alias moni-xbox='sudo ddcutil setvcp 60 0x12'
 #alias moni-ext='sudo ddcutil setvcp 60 0x11'
-alias moni-redhat='sudo ddcutil setvcp 60 0x11'
+#alias moni-redhat='sudo ddcutil setvcp 60 0x10; sudo usbip detach -p 00'
+alias moni-redhat='sudo ddcutil setvcp 60 0x10'
 alias moni_bright='sudo ddcutil setvcp 10 80'
 alias moni_dim='sudo ddcutil setvcp 10 0'
 alias gdb='gdb --args'
+alias logout='i3-msg exit'
+alias gif='gifview -a'
+alias cppman='sudo cppman'
+alias valgrind_full='valgrind --leak-check=full --error-exitcode=1 --tool=memcheck --track-origins=yes --errors-for-leak-kinds=definite --show-leak-kinds=definite'
+#TODO
+alias startjerb='vboxmanage startvm Fedora'
+alias savejerb='vboxmanage controlvm Fedora savestate'
+alias quitjerb='vboxmanage controlvm Fedora poweroff'
+alias resetjerb='vboxmanage controlvm Fedora reset'
 
 
 #dmenu
@@ -101,6 +107,9 @@ spool_print() {
 alias lock='multilockscreen -l blur > /dev/null 2>&1'
 
 set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
 
 . "${HOME}/.cache/wal/colors.sh"
 
@@ -121,16 +130,16 @@ WWW_HOME=https://www.google.com; export WWW_HOME
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/bergsm/prog/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/bergsm/prog/miniconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/home/bergsm/prog/miniconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
+__conda_setup="$('/home/shawn/prog/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/shawn/prog/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/shawn/prog/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/shawn/prog/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 

@@ -33,7 +33,7 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- multilockscreen -l blur --nofork
 #exec --no-startup-id xss-lock /usr/local/bin/idleSuspend --nofork
-exec --no-startup-id idleSuspend
+#exec --no-startup-id idleSuspend
 
 #opactiy messes up scrolling
 #exec --no-startup-id compton --config /home/bergsm/.config/compton/compton.conf
@@ -51,6 +51,10 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 exec --no-startup-id /usr/bin/redshift
 
+exec --no-startup-id /usr/bin/gwe --hide-window
+
+#exec --no-startup-id /usr/bin/xfsettingsd --sm-client-disable
+
 #auto detect monitor
 #exec --no-startup-id /usr/bin/x-on-resize
 
@@ -60,18 +64,29 @@ exec --no-startup-id /usr/bin/autocutsel -fork
 
 #exec --no-startup-id xscreensaver
 
-for_window [class="^.*"] border pixel 2
-#default_border pixel 4
+
+exec --no-startup-id openrgb -d 2 -c 5500FF
+
+for_window [class="^.*"] border pixel 0
+#default_border pixel 10
 #client.focused    #DED687 #DED687 #DED687
 client.focused    $font-color $font-color $font-color
 
 for_window [class="feh"] floating enable
 
+
 gaps inner 10
 #gaps outer 10
 smart_borders on
 
-bindsym Control+Delete exec --no-startup-id multilockscreen -l blur > /dev/null 2>&1
+#bindsym Control+Delete exec --no-startup-id multilockscreen -l blur > /dev/null 2>&1
+#bindsym Control+Delete exec --no-startup-id betterlockscreen --lock blur > /dev/null 2>&1
+#bindsym Home exec dm-tool switch-to-greeter
+#bindsym Control+Delete exec "dm-tool switch-to-greeter; sleep 10; date >> /home/shawn/locktest 2>&1"
+#bindsym Control+Delete exec "dm-tool switch-to-greeter"
+bindsym $mod+Delete exec "dm-tool switch-to-greeter"
+#bindsym Home+End exec "dm-tool switch-to-greeter"
+#bindsym Return+Esc exec "dm-tool switch-to-greeter"
 #bindsym Control+Delete exec --no-startup-id multilockscreen -l > /dev/null 2>&1
 #bindsym $mod+Escape exec --no-startup-id multilockscreen -l > /dev/null 2>&1
 #TODO
@@ -93,6 +108,17 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#bindsym XF86AudioPause exec --no-startup-id pactl suspend-sink @DEFAULT_SINK@ && $refresh_i3status
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+#bindsym XF86AudioPlay exec --no-startup-id pactl suspend-sink @DEFAULT_SINK@ && $refresh_i3status
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+#bindsym XF86AudioNext exec --no-startup-id pactl next && $refresh_i3status
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+#bindsym XF86AudioPrev exec --no-startup-id pactl previous && $refresh_i3status
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+bindsym XF86MonBrightnessUp exec --no-startup-id ddcutil setvcp 10 + 10
+bindsym XF86MonBrightnessDown exec --no-startup-id ddcutil setvcp 10 - 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -113,7 +139,7 @@ bindsym $mod+q kill
 #bindsym $mod+space exec dmenu_run
 #bindsym Control+space exec dmenu_run -i -fn "xft:Iosevka-13:style=medium" -nb "$fg-color" -nf "$bg-color" -sb "$bg-color" -sf "$fg-color"
 #TODO adjust so it dynamically uses system font
-bindsym Control+space exec dmenu_run -i -h 39 -fn "Iosevka-13:style=medium" -nb "$fg-color" -nf "$bg-color" -sb "$bg-color" -sf "$fg-color"
+bindsym $mod+space exec dmenu_run -i -fn "Iosevka-13:style=medium" -nb "$fg-color" -nf "$bg-color" -sb "$bg-color" -sf "$fg-color"
 #bindsym Control+space exec dmenu_run -i -dim 0.6 -h 40 -fn "Iosevka-13:style=medium" -nb "$fg-color" -nf "$bg-color" -sb "$bg-color" -sf "$fg-color"
 #bindsym Control+space exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -185,6 +211,8 @@ bindsym $mod+Shift+f floating toggle
 #bindsym $mod+space focus mode_toggle
 
 #screenshot
+#bindsym Next exec flameshot gui
+#bindsym $mod+Shift+s exec flameshot gui
 bindsym Print exec flameshot gui
 
 # focus the parent container
@@ -219,8 +247,8 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # set work spaces to displays
-workspace 1 output HDMI-A-0
-workspace 2 output eDP
+workspace 1 output DP-0
+#workspace 2 output eDP
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -242,6 +270,11 @@ bindsym $mod+Shift+Control+Up move workspace to output up
 bindsym $mod+Shift+Control+j move workspace to output down
 bindsym $mod+Shift+Control+k move workspace to output up
 
+bindsym --whole-window $mod+Control+button6 workspace prev
+bindsym --whole-window $mod+Control+button7 workspace next
+bindsym --whole-window $mod+Control+button5 workspace prev
+bindsym --whole-window $mod+Control+button4 workspace next
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -250,6 +283,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #focus_follows_mouse no
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -291,6 +325,11 @@ bar {
     #TODO make dynamic with Xresources
     font pango:Iosevka Medium
     #font Iosveka-13 40px
+    #Disable scroll without mod key
+    bindsym button4 nop
+    bindsym button5 nop
+    bindsym button6 nop
+    bindsym button7 nop
     colors {
         #background $bg-color
         #background #000000BB
@@ -301,13 +340,17 @@ bar {
         statusline $font-color
         #statusline $fg-color
         focused_workspace    $bg-color    $fg-color    $bg-color
+        inactive_workspace    #000000BB    #000000BB    $fg-color
         }
-        #TODO font color
+        workspace_min_width 30
         #font xft:Isoveka-12 14px
         #status_command i3status
         i3bar_command i3bar --transparency
         #i3bar_command i3bar
         status_command i3blocks
         position top
-        #mode hide
+        mode hide
+        hidden_state hide
+        #modifier $mod
+        modifier $mod+Control
 }

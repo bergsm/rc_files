@@ -9,7 +9,8 @@ Xft.dpi: 110
 URxvt.saveLines: 200000
 URxvt.scrollBar: False
 URxvt.scrollstyle: rxvt
-URxvt.termName: xterm-256color
+!URxvt.termName: xterm-256color
+URxvt.termName: rxvt-unicode
 URxvt.urgentOnBell: True
 URxvt.cursorBlink: True
 
@@ -47,7 +48,7 @@ URxvt.font: xft:Iosevka-13:style=medium
 URxvt.boldFont: xft:Iosevka-13:style=Extrabold
 !URxvt.font: xft: Iosevka-12:pixelsize=20
 !URxvt.boldFont: xft: Iosevka-12:pixelsize=20:style=bold
-!URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 ! Tango theme
 
@@ -56,21 +57,21 @@ URxvt.boldFont: xft:Iosevka-13:style=Extrabold
 
 ! Wal Colors
 wal.color0: #000000
-wal.color1: #2329A0
-wal.color2: #355CBF
-wal.color3: #6570AE
-wal.color4: #7885AF
-wal.color5: #6895D3
-wal.color6: #9394B3
-wal.color7: #c6d0e0
-wal.color8: #8a919c
-wal.color9: #2329A0
-wal.color10: #355CBF
-wal.color11: #6570AE
-wal.color12: #7885AF
-wal.color13: #6895D3
-wal.color14: #9394B3
-wal.color15: #c6d0e0
+wal.color1: #2D3E8F
+wal.color2: #512A91
+wal.color3: #314A8D
+wal.color4: #3D6194
+wal.color5: #4D6092
+wal.color6: #5972A2
+wal.color7: #adb6c9
+wal.color8: #797f8c
+wal.color9: #2D3E8F
+wal.color10: #512A91
+wal.color11: #314A8D
+wal.color12: #3D6194
+wal.color13: #4D6092
+wal.color14: #5972A2
+wal.color15: #adb6c9
 
 ! black
 URxvt.color0  : #2E3436
@@ -163,15 +164,15 @@ XTerm*color14 : #34E2E2
 XTerm*color7  : #D3D7CF
 XTerm*color15 : #EEEEEC
 
-!URxvt.transparent:   true
-URxvt.transparent:   false
-!URxvt.shading: 30
+URxvt.transparent:   true
+!URxvt.transparent:   false
+URxvt.shading: 30
 !URxvt.shading: 80
-urxvt*depth: 		 32
+!urxvt*depth: 		 32
 urxvt*background:    rgba:0000/0000/0000/0000
 !urxvt*background:    rgba:ffff/ffff/ffff/ffff
 ! SLOOOOWW
-!urxvt*blurRadius: 100
+urxvt*blurRadius: 30
 
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
