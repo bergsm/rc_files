@@ -2,11 +2,17 @@
 
 syntax enable		" enable syntax processing
 
+set backup
+set undofile
+set undodir=~/.vim/undodir
+
 set viminfo='20,<1000,s1000
 
 set clipboard=unnamedplus
 
 set backspace=indent,eol,start
+
+set mouse=a
 
 " use tabs for makefiles
 if has ("autocmd")
