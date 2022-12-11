@@ -65,8 +65,6 @@ exec --no-startup-id /usr/bin/autocutsel -fork
 #exec --no-startup-id xscreensaver
 
 
-exec --no-startup-id openrgb -d 2 -c 5500FF
-
 for_window [class="^.*"] border pixel 0
 #default_border pixel 10
 #client.focused    #DED687 #DED687 #DED687
@@ -80,11 +78,12 @@ gaps inner 10
 smart_borders on
 
 #bindsym Control+Delete exec --no-startup-id multilockscreen -l blur > /dev/null 2>&1
-#bindsym Control+Delete exec --no-startup-id betterlockscreen --lock blur > /dev/null 2>&1
+bindsym Control+Return exec --no-startup-id betterlockscreen --lock > /dev/null 2>&1
+bindsym Control+Delete exec --no-startup-id betterlockscreen --lock > /dev/null 2>&1
 #bindsym Home exec dm-tool switch-to-greeter
 #bindsym Control+Delete exec "dm-tool switch-to-greeter; sleep 10; date >> /home/shawn/locktest 2>&1"
 #bindsym Control+Delete exec "dm-tool switch-to-greeter"
-bindsym $mod+Delete exec "dm-tool switch-to-greeter"
+#bindsym $mod+Delete exec "dm-tool switch-to-greeter"
 #bindsym Home+End exec "dm-tool switch-to-greeter"
 #bindsym Return+Esc exec "dm-tool switch-to-greeter"
 #bindsym Control+Delete exec --no-startup-id multilockscreen -l > /dev/null 2>&1
@@ -109,9 +108,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 #bindsym XF86AudioPause exec --no-startup-id pactl suspend-sink @DEFAULT_SINK@ && $refresh_i3status
-bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
 #bindsym XF86AudioPlay exec --no-startup-id pactl suspend-sink @DEFAULT_SINK@ && $refresh_i3status
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
 #bindsym XF86AudioNext exec --no-startup-id pactl next && $refresh_i3status
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 #bindsym XF86AudioPrev exec --no-startup-id pactl previous && $refresh_i3status
@@ -293,8 +292,8 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize grow height 2 px or 2 ppt
-        bindsym k resize shrink height 2 px or 2 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
         #bindsym j resize grow width 2 px or 2 ppt
         #bindsym k resize shrink width 2 px or 2 ppt
         bindsym h resize grow width 2 px or 2 ppt
@@ -332,8 +331,7 @@ bar {
     bindsym button7 nop
     colors {
         #background $bg-color
-        #background #000000BB
-        background #000000BB
+        background #000000ED
         #background #00000000
         #separator #757575
         separator $bg-color
