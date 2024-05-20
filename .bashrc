@@ -5,8 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
-
+stty -ixon
+export PROMPT_COMMAND='history -a'
 export HISTSIZE=10000
 export EDITOR=vim
 export BROWSER=firefox
@@ -25,7 +25,7 @@ alias pacman='sudo pacman'
 alias makepkg='makepkg -si'
 alias batt='acpi'
 #alias find='sudo find'
-alias find='fd'
+#alias find='fd'
 alias updatedb='sudo updatedb'
 alias calc='bc -l'
 alias weather='curl -Ss https://wttr.in?0'
@@ -45,7 +45,7 @@ alias killvpn='sudo killall openvpn'
 alias bton='bluetoothctl power on'
 alias btoff='bluetoothctl power off'
 alias docker='sudo docker'
-alias flameshot='flameshot gui'
+#alias flameshot='flameshot gui'
 alias audio='pavucontrol'
 alias moni-xbox='sudo ddcutil setvcp 60 0x12'
 #alias moni-ext='sudo ddcutil setvcp 60 0x11'
@@ -63,13 +63,16 @@ alias startjerb='vboxmanage startvm Fedora'
 alias savejerb='vboxmanage controlvm Fedora savestate'
 alias quitjerb='vboxmanage controlvm Fedora poweroff'
 alias resetjerb='vboxmanage controlvm Fedora reset'
+alias headphones='echo -e "connect 14:3F:A6:C4:51:F4" | bluetoothctl'
+alias hotspot='nmcli dev wifi connect Pixel_5028 password Bevo4life!'
+#alias antlr='antlr4'
 
 
-#dmenu
 # Import the colors.
 . "${HOME}/.cache/wal/colors.sh"
 
 # Create the alias.
+#alias dmenu='dmenu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 alias dmen='dmenu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 
 LS_COLORS="ex=32"
@@ -104,18 +107,17 @@ spool_print() {
 }
 
 #alias lock='(bash /home/bergsm/pics/shutdown2/shutdown.sh lock & > /dev/null 2>&1)'
-alias lock='multilockscreen -l blur > /dev/null 2>&1'
+#alias lock='multilockscreen -l blur > /dev/null 2>&1'
 
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 
 
-. "${HOME}/.cache/wal/colors.sh"
-
 
 #PS1='[\u@\h \W]\$ '
-PS1="\n\e[38;5;7m\u\e[38;5;256m@\e[38;5;239m\h:\e[m\e[38;5;4m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+#PS1="\n\e[38;5;7m\u\e[38;5;256m@\e[38;5;239m\h:\e[m\e[38;5;4m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
+PS1="\n\e[38;5;7m\u\e[38;5;4m@\e[38;5;239m\h:\e[m\e[38;5;4m\w\e[m\e[0;90m\$(parse_git_branch)\e[m \n\$"
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'

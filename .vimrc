@@ -2,6 +2,7 @@
 
 syntax enable		" enable syntax processing
 
+"set scrolloff=1000
 set backup
 set undofile
 set undodir=~/.vim/undodir
@@ -32,11 +33,13 @@ set shiftwidth=4
 "set softtabstop=3
 "set shiftwidth=3
 
-
+"set is hls
+set is
 set expandtab
 set number
 set showcmd
 "set cursorline
+"set cursorcolumn
 set showmatch
 set background=dark
 set nosmartindent
@@ -75,6 +78,8 @@ execute "highlight Special term=bold ctermfg=".color
 highlight Visual term=bold ctermfg=NONE ctermbg=235
 syn match Todo contained "\<\(TODO\|FIXME\|BUG\)"
 
+
+
 "colorscheme jellybeans
 colorscheme wal
 
@@ -82,6 +87,7 @@ execute "highlight Todo term=bold ctermfg=Black ctermbg=Yellow"
 highlight diffAdded ctermfg=28
 highlight diffRemoved ctermfg=196
 highlight Todo ctermbg=187
+hi CursorColumn ctermbg=NONE term=NONE cterm=NONE
 
 " highlight whitespace
 highlight ExtraWhitespace ctermbg=196 guibg=red
@@ -104,6 +110,7 @@ if has ("autocmd")
     au FileType * set fo-=c fo-=r fo-=o
 endif
 
+
 "Tab auto complete
 function! CleverTab()
     if strpart( getline('.'), 0, col('.')-1) =~ '^\s*$'
@@ -116,43 +123,43 @@ endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
 "Comment block remaps
-function CommentBlock()
-    let s=line(".")
-    call setline(s,"#################################################")
-    call append(s,"#")
-    call append(s+1,"#################################################")
-    unlet s
-    return ""
-endfunction
-inoremap ### <C-R>=FileHeading()<CR>
+"function CommentBlock()
+"    let s=line(".")
+"    call setline(s,"#################################################")
+"    call append(s,"#")
+"    call append(s+1,"#################################################")
+"    unlet s
+"    return ""
+"endfunction
+"inoremap ### <C-R>=FileHeading()<CR>
 
 
 
-function FileHeading()
-    let s=line(".")
-    call setline(s,"/***********************************************")
-    call append(s,"* File name:")
-    call append(s+1,"* Description:")
-    call append(s+2,"* Author:")
-    call append(s+3,"* Date:")
-    call append(s+4,"************************************************/")
-    unlet s
-    return ""
-endfunction
-inoremap //// <C-R>=FileHeading()<CR>
-
-function! FunctionHeading()
-    let s=line(".")
-    call setline(s,"/***********************************************")
-    call append(s,"* Function name:")
-    call append(s+1,"* Description:")
-    call append(s+2,"* Parameters:")
-    call append(s+3,"* Returns:")
-    call append(s+4,"************************************************/")
-    unlet s
-    return ""
-endfunction
-inoremap /// <C-R>=FunctionHeading()<CR>
+"function FileHeading()
+"    let s=line(".")
+"    call setline(s,"/***********************************************")
+"    call append(s,"* File name:")
+"    call append(s+1,"* Description:")
+"    call append(s+2,"* Author:")
+"    call append(s+3,"* Date:")
+"    call append(s+4,"************************************************/")
+"    unlet s
+"    return ""
+"endfunction
+"inoremap //// <C-R>=FileHeading()<CR>
+"
+"function! FunctionHeading()
+"    let s=line(".")
+"    call setline(s,"/***********************************************")
+"    call append(s,"* Function name:")
+"    call append(s+1,"* Description:")
+"    call append(s+2,"* Parameters:")
+"    call append(s+3,"* Returns:")
+"    call append(s+4,"************************************************/")
+"    unlet s
+"    return ""
+"endfunction
+"inoremap /// <C-R>=FunctionHeading()<CR>
 
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'

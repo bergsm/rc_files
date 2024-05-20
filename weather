@@ -5,7 +5,7 @@ API_KEY=5c34df2bf271eee9a9ff24fc13142f18
 
 #TODO use geolocation data
 # Check on http://openweathermap.org/find
-CITY_ID=4459467
+CITY_ID=5037649
 
 
 ICON_SUNNY=""

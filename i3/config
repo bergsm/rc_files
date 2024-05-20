@@ -38,22 +38,26 @@ font pango:monospace 8
 #opactiy messes up scrolling
 #exec --no-startup-id compton --config /home/bergsm/.config/compton/compton.conf
 exec --no-startup-id picom
+exec_always --no-startup-id flameshot
 
 #exec i3-sensible-terminal
 
 #exec --no-startup-id bash /home/bergsm/pics/startup2/startup.sh
 
-exec --no-startup-id feh /home/bergsm/pics/wallpapers/wallpaper --bg-fill
+#exec --no-startup-id feh /home/bergsm/pics/wallpapers/wallpaper --bg-fill
 exec --no-startup-id wal -R
+exec --no-startup-id bash /home/shawn/prog/auto_rgb/lightson.sh
 
 # geoloc for redshift
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+#exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
-exec --no-startup-id /usr/bin/redshift
+exec --no-startup-id /usr/bin/redshift -l manual
 
-exec --no-startup-id /usr/bin/gwe --hide-window
+#exec --no-startup-id /usr/bin/gwe --hide-window
 
 #exec --no-startup-id /usr/bin/xfsettingsd --sm-client-disable
+
+exec --no-startup-id /usr/lib/notification-daemon-1.0/notification-daemon
 
 #auto detect monitor
 #exec --no-startup-id /usr/bin/x-on-resize
@@ -61,6 +65,8 @@ exec --no-startup-id /usr/bin/gwe --hide-window
 #TODO does this work? copy paste from and terminal
 exec --no-startup-id /usr/bin/autocutsel -s PRIMARY -fork
 exec --no-startup-id /usr/bin/autocutsel -fork
+
+exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
 
 #exec --no-startup-id xscreensaver
 
@@ -78,8 +84,8 @@ gaps inner 10
 smart_borders on
 
 #bindsym Control+Delete exec --no-startup-id multilockscreen -l blur > /dev/null 2>&1
-bindsym Control+Return exec --no-startup-id betterlockscreen --lock > /dev/null 2>&1
-bindsym Control+Delete exec --no-startup-id betterlockscreen --lock > /dev/null 2>&1
+#bindsym Control+Return exec --no-startup-id betterlockscreen --lock > /dev/null 2>&1
+bindsym Control+Delete exec --no-startup-id betterlockscreen --lock dim > /dev/null 2>&1
 #bindsym Home exec dm-tool switch-to-greeter
 #bindsym Control+Delete exec "dm-tool switch-to-greeter; sleep 10; date >> /home/shawn/locktest 2>&1"
 #bindsym Control+Delete exec "dm-tool switch-to-greeter"
@@ -212,7 +218,7 @@ bindsym $mod+Shift+f floating toggle
 #screenshot
 #bindsym Next exec flameshot gui
 #bindsym $mod+Shift+s exec flameshot gui
-bindsym Print exec flameshot gui
+bindsym Print exec --no-startup-id flameshot gui
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -331,7 +337,8 @@ bar {
     bindsym button7 nop
     colors {
         #background $bg-color
-        background #000000ED
+        #background #000000ED
+        background #0000008D
         #background #00000000
         #separator #757575
         separator $bg-color
@@ -340,15 +347,15 @@ bar {
         focused_workspace    $bg-color    $fg-color    $bg-color
         inactive_workspace    #000000BB    #000000BB    $fg-color
         }
-        workspace_min_width 30
+        #workspace_min_width 30
         #font xft:Isoveka-12 14px
         #status_command i3status
         i3bar_command i3bar --transparency
         #i3bar_command i3bar
         status_command i3blocks
         position top
-        mode hide
-        hidden_state hide
+        #mode hide
+        #hidden_state hide
         #modifier $mod
-        modifier $mod+Control
+        #modifier $mod+Control
 }
