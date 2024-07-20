@@ -28,6 +28,7 @@ input type:keyboard {
 
 input 1452:849:Apple_MTP_multi-touch {
     natural_scroll disabled
+    scroll_factor 0.5
 }
 
 
